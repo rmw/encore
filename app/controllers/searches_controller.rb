@@ -1,14 +1,16 @@
-class PagesController < ApplicationController
+class SearchesController < ApplicationController
+
   def index
   end
 
   def search
-    @band = params[:band]
+    band_query = params[:band]
+    @band = Artist.where(name: band_query).first_or_initialize
+    @mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
-    mbid = Musicbrainz.search(@band)
-    if mbid
-      @results = Setlist.search(mbid)
-      Artist.where(name: @band).first_or_create
+    if @mb_result
+      save_band if @band.id.nil?
+      @results = Setlist.search(@mb_result)
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
@@ -16,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def search_youtube
-    @band = Artist.find_by(name: params[:band])
+    @band = Artist.where(name: params[:band]).first_or_create
 
     search_params = params[:concert].split(', ')
 
@@ -27,13 +29,13 @@ class PagesController < ApplicationController
     @songs = params[:songs]
     @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
-    #@venue = venue.name
-    #@city = venue.city.strftime
-    #@state = venue.state
 
     search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
     search2 = "#{@band.name}, #{@venue.name}, #{@date}"
     search3 = "#{@band.name}, #{@venue.state}, #{@date}"
+    # A couple more search options
+    # search4 = "#{@band.name}, #{@tour}, #{@date}"
+    # search5 = "#{@band.name}, #{@tour}, #{@venue.name}"
 
     @titles_ids = {}
 
@@ -49,12 +51,13 @@ class PagesController < ApplicationController
       if result =~ /\(\w*\)\z/
         title = result.gsub(/ \(\w*\)\z/, '')
         @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
-        # @ids << result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
   end
 
-  def make_concert
-
+  private
+  def save_band
+    @band.mbid = @mb_result
+    @band.save!
   end
 end

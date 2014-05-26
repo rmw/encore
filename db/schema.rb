@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525155704) do
+ActiveRecord::Schema.define(version: 20140526122645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,19 +20,23 @@ ActiveRecord::Schema.define(version: 20140525155704) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mbid"
   end
 
   create_table "attended_concerts", force: true do |t|
     t.integer  "concert_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "attended_concerts", ["concert_id"], name: "index_attended_concerts_on_concert_id", using: :btree
+  add_index "attended_concerts", ["user_id"], name: "index_attended_concerts_on_user_id", using: :btree
 
   create_table "concert_artists", force: true do |t|
     t.integer  "concert_id"
     t.integer  "artist_id"
+    t.string   "concert_position", default: "Headliner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

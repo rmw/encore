@@ -1,8 +1,0 @@
-<h1>Concerts for <%= @band %></h1>
-<% @results.each do |concert, songs| %>
-  <div class="concert-listing">
-    <%= link_to(search_youtube_path(band: @band, concert: concert, songs: songs), id: 'concert-title') do  %>
-      <h3><%= concert %></h3>
-    <% end %>
-  </div>
-<% end %>
