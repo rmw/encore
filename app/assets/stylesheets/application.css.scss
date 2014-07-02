@@ -1,3 +1,17 @@
+//= require font-awesome
+
+ @import "bourbon";
+ @import "grid-settings";
+ @import "neat";
+ @import "normalize";
+ @import "colors";
+ @import "fonts";
+ @import "main";
+ @import "concerts";
+ @import "searches";
+ @import "users";
+ @import "pages";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -9,7 +23,6 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
- *= require_tree .
  *= require_self
  */
+

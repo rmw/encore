@@ -1,8 +1,34 @@
-<h1>Concerts for <%= @band.name %></h1>
-<% @results.each do |concert, songs| %>
-  <div class="concert-listing">
-    <%= link_to(search_youtube_path(band: @band.name, concert: concert, songs: songs), id: 'concert-title') do  %>
-      <h3><%= concert %></h3>
+<div id="search-page">
+  <h1>Concerts for <%= @band.name %></h1>
+
+  <div class="upper-left-nav">
+    <% unless params[:page].to_i == 1 %>
+    <%= link_to icon('angle-left'), search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
     <% end %>
   </div>
-<% end %>
+
+  <% if params[:page].to_i < @max_pages %>
+    <div class="upper-nav">
+      <%= link_to icon('angle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+      <br>
+    </div>
+  <% end %>
+
+    <ul class="concert-listings">
+      <% @results.each do |concert, songs| %>
+        <%= render partial: "concert_listing", locals: { band: @band, concert: concert, songs: songs } %>
+      <% end %>
+    </ul>
+
+    <div class="lower-left-nav">
+      <% unless params[:page].to_i == 1 %>
+        <%= link_to icon('angle-left'), search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
+      <% end %>
+    </div>
+
+    <% if params[:page].to_i < @max_pages %>
+      <div class="lower-nav">
+        <%= link_to icon('angle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+      </div>
+    <% end %>
+</div>

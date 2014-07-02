@@ -1,0 +1,266 @@
+.hidden_form {
+	display: none;
+}
+
+html {
+	max-width: $max-width;
+	margin: 0 auto;
+	position: relative;
+}
+
+body {
+	background-image: asset-url('white_wall_hash.png');
+	margin: 0 0 0 0;
+	padding-top: 5em;
+	max-width: inherit;
+	font: 'Lato';
+	font-weight: 900;
+}
+
+.container {
+	margin-top: -1em;
+}
+
+h1 {
+	color: $base-red;
+	font-size: 3.5em;
+}
+
+h2 {
+	color: $dark-gray;
+	font-size: 1.5em;
+}
+
+h3 {
+	color: $light-red;
+	font-size: 1em;
+}
+
+
+p, li, ul, a {
+	text-decoration: none;
+	list-style-type: none;
+	color: $base-gray;
+	font-size: 0.75em;
+}
+
+li:even {
+	color: $light-gray;
+}
+
+a:hover{
+	color: $light-red;
+}
+
+/* styles for application layout*/
+nav {
+	top: 0;
+	position: fixed;
+	z-index: 1;
+	height: 4em;
+	@include span-columns(12);
+	background-color: $darker-gray;
+	opacity: 0.95;
+	a {
+		color: white;
+	}
+	&:hover {
+		color: $light-red;
+	}
+	a.headline {
+		color: white;
+		position: static;
+		font-family: 'Lato';
+		margin-left: 1em;
+	}
+	h1 {
+		margin-top: -0.2em;
+		color: white;
+	}
+	ul {
+		margin-bottom: 0;
+		li {
+			font-size: 2em;
+			position: fixed;
+			margin-top: -2.5em;
+			left: 80%;
+			@include media($tablet){
+				left: 75%;
+			}
+			@include media($mobile){
+				left: 75%;
+			}
+			color: white;
+		}
+		li.sign-out-button {
+			position: relative;
+			margin-left: 6em;
+		}
+		li.invite-friends {
+			display: none;
+		}
+	}
+}
+
+/* styles for app landing page */
+body.searches.index {
+	background-image: asset-url('phanto-concert.jpg');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+
+.jumbotron{
+ @include span-columns(12);
+	center {
+	 	margin-top: 4em;
+		color: white;
+	  h1 {
+	  	font-family: 'Yanone Kaffeesatz', sans-serif;
+	  	font-size: 7em;
+	  	color: $light-red;
+	  }
+	  h2 {
+	  	font-size: 4em;
+	  	color: white;
+	  	margin-top: -0.5em;
+	  }
+	 }
+ input#myinput.form-control{
+ 	@include span-columns(6);
+ 	@include shift(3);
+ 	color: $base-red;
+ 	font-size: 1.5em;
+ 	border: 2px outset white;
+ }
+ input.search-button {
+ 	@include span-columns(2);
+ 	@include shift(4.75);
+ 	margin-top: 2.5em;
+
+ 	border: 4px solid $dark-red;
+ 	padding: 5px;
+ 	color: white;
+ 	background-color: $dark-red;
+
+ 	&:hover{
+ 		background-color: white;
+ 		color: black;
+ 		border-color: black;
+ 	}
+ }
+
+ #howitworks {
+ 	display: none;
+ 	margin-top: 17em;
+ 	padding-top: 5.2em;
+
+ 	@include span-columns(12);
+ 	position: relative;
+ 	background-color: white;
+ 	i {
+ 		font-size: 3em;
+ 		color: $base-red;
+ 	}
+
+ 	h1 {
+ 		margin-top: 2em;
+ 		color: $base-gray;
+ 		margin-bottom: 1em;
+	  @include span-columns(6);
+	  @include shift(4);
+	  font-weight: 1000;
+	  font-size: 3em;
+ 		}
+ 	h3 {
+ 		color: $base-red;
+ 		@include shift(3);
+
+ 	}
+ 	p {
+ 		width: 90%;
+ 	}
+ 	.home-left{
+ 		position: relative;
+ 		@include span-columns(3.5);
+ 		@include shift(1);
+ 		height: 20em;
+ 			i {
+ 				@include shift(4)
+ 			}
+ 		}
+ 	.home-center{
+ 		position: relative;
+ 		@include span-columns(4);
+ 		height: 20em;
+ 			i {
+ 				@include shift(4);
+ 			}
+ 		}
+ 	.home-right{
+ 		position: relative;
+ 		@include span-columns(3.5);
+ 		height: 20em;
+ 			i {
+ 				@include shift(4.5);
+ 			}
+ 		}
+	}
+}
+
+#flash {
+	background-color: white;
+	color: $light-red;
+	text-align: center;
+	button.close{
+		border-radius: 10px;
+		background-color: $base-gray;
+		color: white;
+	}
+}
+
+/* styles for sign in button */
+
+#sign_in {
+	padding: 5px;
+	@include shift(1);
+	width: 12em;
+	position: fixed;
+	margin-top: -0.5em;
+	left: 62%;
+
+	margin-bottom: 4.5%;
+	&:hover, &:active{
+		color: $base-red;
+	}
+}
+.following {
+	.unfollow { color: red; }
+
+	&.following_true {
+		.unfollow { display: inline; }
+	  .follow { display: none; }
+	}
+
+	&.following_false {
+		.unfollow { display: none; }
+		.follow { display: inline }
+	}
+}
+
+#suggestion {
+	position: fixed;
+	bottom: 0;
+	background-color: white;
+	font-size: 1em;
+	opacity: 0.75;
+	width: 100%;
+
+}
+
+#suggestion > a {
+	color: #FF6438;
+	font-size: 1em;
+}

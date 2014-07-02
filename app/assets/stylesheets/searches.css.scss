@@ -1,0 +1,112 @@
+
+/* Styles for Youtube Search Results Page (specific concert) */
+
+ .video-list{
+  @include span-columns(8);
+  @include shift(1);
+  .add-song {
+    display: inline-block;
+  }
+}
+
+.video-form {
+	@include span-columns(4.5);
+	position: relative;
+	margin-left: 24em;
+	margin-top: -14em;
+	select#song_songs{
+		margin-bottom: 1em;
+		background-color: $darker-gray;
+		color: white;
+	}
+	#add-song{
+		background-color: $base-red;
+		color: white;
+		padding: 5px;
+		border: 1px solid white;
+
+	}
+	p {
+		color: $darker-gray;
+	}
+}
+
+.alert alert-success {
+	background-color: $light-red;
+}
+
+.youtube {
+	margin-bottom: 2em;
+}
+
+.outside {
+	@include outer-container;
+	opacity: 0.8;
+	margin-top: -2em;
+	.concert-header{
+		position: relative;
+		padding-top: 2em;
+		h2{
+			font-family: 'Yanone Kaffeesatz', sans-serif;
+			color: $dark-red;
+			font-size: 3.4em;
+			text-align: center;
+		}
+		h3{
+			color: $dark-gray;
+			font-size: 2em;
+			text-align: center;
+			margin-top: -1.2em;
+		}
+		h4{
+			color: $light-gray;
+			font-size: 1.3em; 
+			text-align: center;
+			margin-top: -1em;
+		}
+		font-size: 1.2em;
+		button {
+			background-color: #d75b5b;
+			border: 1px solid white;
+			position: absolute;
+			right: 1%;
+			top: 1.7em;
+			padding: 15px;
+			width: 23.40426%;
+			font-size: 1.5em;
+			a {
+				color: white;
+				padding: 20px;
+			}			
+		}
+	}
+
+	.setlist-container {
+		@include span-columns(3);
+		border: 1px solid $darker-gray;
+		background-image: url('lightpaperfibers.png');
+		color: $darker-gray;
+		font-family: 'Just Another Hand';
+		position: absolute;
+		top: 12em;
+		right: 1em;
+		h3 {
+			font-size: 2em;
+			text-align: center;
+			color: $base-gray;
+		}
+		ol.set-songs {
+		 margin-top: -1em;
+		 font-size: 1.5em;
+		 li.set-song{
+		 	color: black;
+		 	i {
+		 		position: absolute;
+				right: 1em;
+		 	}
+		 	margin-bottom: .5em;
+		 	border-bottom: 1px solid $darker-gray;
+		 }
+		}
+	}
+}

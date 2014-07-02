@@ -6,17 +6,20 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-# gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'spring',        group: :development
 gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
-gem 'bootstrap-sass', '~> 3.1.1'
-gem 'will_paginate'
-
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'bourbon'
+gem 'neat'
+gem 'font-awesome-sass'
+gem 'fog'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 1.4.1'
+gem 'youtube_it'
 
 group :development, :test do
 	gem 'pry-rails'
@@ -39,6 +42,7 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

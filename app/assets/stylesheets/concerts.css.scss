@@ -1,0 +1,310 @@
+/* styles for initial concert search results page */
+
+#search-page {
+	@include outer-container;
+	width: 60%;
+	margin-top: -2em;
+	padding-bottom: 4em;
+	h1 {
+		font-family: 'Yanone Kaffeesatz', sans-serif;
+		color: $dark-red;
+		padding-top: 1em;
+		padding-bottom: -1em;
+		text-align: center;
+		font-size: 4.5em;
+	}
+	.concert-listings {
+		margin: 0 auto;
+		position: relative;
+
+		li {
+			list-style-type: none;
+			margin-right: 10px;
+			background-color: white;
+			margin-top: 0;
+			/*&:nth-child(even){
+				background-color: $light-gray*0.9;
+			}*/
+			a {
+				float: left;
+				text-align: center;
+				color: #7a7a7a;
+				padding: 10px;
+				border: 1px solid white;
+				text-decoration: none;
+				margin-bottom: 1.5em;
+				background: inherit;
+				margin-left: 12px;
+
+				h3 {
+					margin-top: 0;
+					background-color: $dark-red;
+					color: white;
+					font-size: 3.5em;
+				}
+				h4 {
+					margin-top: -1.5em;
+					font-size: 2.5em;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	i {
+		font-size: 5em;
+		color: $base-red;
+	}
+	.upper-nav{
+
+		position: absolute;
+		right: 12em;
+	}
+	.upper-left-nav{
+		position: absolute;
+		left: 12em;
+	}
+	.lower-nav{
+		position: absolute;
+		right: 12em;
+		bottom: 7em;
+	}
+	.lower-left-nav{
+		position: absolute;
+		left: 12em;
+		bottom: 7em;
+	}
+}
+
+
+.flagged {
+  background: black;
+  opacity: 0.5;
+}
+
+/* styles for concert show page */
+
+.concert-show-container{
+	opacity: 0.8;
+	margin-top: -2em;
+	#head-left {
+		margin-top: 1em;
+		@include shift(1.3);
+		@include span-columns(8);
+		h1{
+			font-size: 4.6em;
+			font-family: 'Yanone Kaffeesatz', sans-serif;;
+			margin-bottom: 0.2em;
+		}
+		h2{
+			margin-top: -0.6em;
+			color: $dark-gray;
+			font-size: 2.4em;
+		}
+		h2.date{
+			margin-top: -1em;
+			font-size: 2em;
+			color: $darker-gray;
+		}
+	}
+	#submit-video{
+		height: 250px;
+		width: 250px;
+		position: absolute;
+		right: -1em;
+		color: $base-red;
+		select#song_name{
+			background-color: $dark-gray;
+			color: white;
+		}
+	input#video_link{
+
+		background-color: $dark-gray;
+		color: white;
+		}
+	input[type=submit]{
+		background-color: $base-red;
+		color: white;
+		border: 1px solid white;
+		}
+	}
+	.concert-show-setlist {
+		text-align: center;
+		background-image: url("lightpaperfibers.png");
+		color: #020303;
+		font-family: 'Just Another Hand';
+		font-size: 1.2em;
+		border: 1px solid $dark-gray;
+		position: absolute;
+		margin-left: 1em;
+		top: 12.2em;;
+		right: 2em;
+		width: 14.5em;
+		h3 {
+			font-size: 2em;
+			text-align: center;
+			color: $darker-gray;
+		}
+		h2 {
+			font-size: 2em;
+		}
+		ol {
+		 margin-top: -1em;
+		 font-size: 1.6em;
+		 li {
+		 	color: $light-red;
+		 	margin-bottom: .5em;
+		 	margin-left: -1.8em;
+		 	border-bottom: 1px solid $darker-gray;
+		 	a{
+		 		font-size: 0.8em;
+		 	}
+		 }
+		}
+	}
+}
+
+#player{
+	position: relative;
+	@include shift(4);
+	display: block;
+	clear: both;
+}
+
+input#add_attendee_btn{
+	position: absolute;
+	top: 6em;
+	margin-bottom: 1em;
+	color: white;
+	background-color: $base-red;
+	height: 2.5em;
+	right: 2.7em;
+	width: 16.750em;
+}
+
+.videos {
+	margin: 10px 300px 10px 15px;
+}
+
+.video-box {
+	margin: 10px 10px 10px 0px;
+	padding: 5px 10px;
+	min-width: 359px;
+	min-height: 316px;
+	// border: 2px solid;
+	float: left;
+	background-color: $base-red*0.85;
+	color: white;
+
+	&:nth-child(even) {
+		background-color: $base-red;
+	}
+	// display: inline-flex;
+	// flex-direction: column;
+	// flex-wrap: wrap ltr
+}
+
+.video-box > h3 {
+	// align-self: flex-start;
+	top: 5px;
+	height: 20px;
+	color: white;
+	font-size: 1.2em;
+}
+
+.video-container {
+	top: 20px;
+	padding: 10px 5px 5px 10px;
+}
+
+.video-container > a {
+	top: 0;
+}
+
+.song_label {
+	padding-left: 10px;
+	white-space:nowrap;
+}
+
+.concert-photos {
+	margin: 0 0 10px 20px;
+}
+
+.concert-photos > .concert-img {
+	display: inline-block;
+	margin: 10px 10px 30px 10px;
+}
+
+.new_concert_photo {
+	color: #d75b5b;
+	display: none;
+	color: $base-red;
+	input{
+		background-color: $dark-gray;
+		color: white;
+	}
+	input[type="file"]{
+		background-color: $dark-gray;
+		color: white;
+	}
+}
+
+#buttons {
+	top: 10em;
+	display: block;
+	margin-right: 2.12766%;
+	position: fixed;
+	margin-left: 1em;
+	top: 9.2em;
+	right: .75em;
+
+	button{
+		background-color: $dark-gray;
+		color: white;
+		display: block;
+		width: 16.750em;
+		margin-top: 0.5em;
+
+	
+	}
+	button.added{
+		color: white;
+		background-color: $light-gray;
+		margin-top: -4.5em;
+		right: 2.7em;
+
+	}
+	button.active{
+		background-color: $dark-red;
+		color: $light-gray;
+	}
+	button.videos{
+		margin-top: 1em;
+	}
+	button.photos{
+
+	}
+}
+
+.date {
+	padding-top: 3px;
+	color: black;
+	white-space:nowrap;
+}
+
+.new_concert_song{
+	display: none;
+	margin-bottom: 2em;
+	text-align: center;
+	color: $darker-gray;
+	font-family: 'Lato';
+	input{
+		background-color: $dark-gray;
+		color: white;
+		@include span-columns(8);
+		@include shift(2);
+		margin-bottom: 1em;
+
+	}
+}
+

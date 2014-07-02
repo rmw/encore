@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>Encore</title>
+  <link href="//fonts.googleapis.com/css?family=Source+Sans Pro:200italic,200,300italic,300,400italic,400,600italic,600,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet" type="text/css">
+  <%= favicon_link_tag 'ticket-16.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -9,55 +13,42 @@
   <!-- Code for Google Freebase Search -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.css" />
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.js"></script>
 
   <script type="text/javascript">
   $(function() {
-    $("#myinput").suggest({ "key" : "AIzaSyCJlvFbCyGpDSqxWQiliVKGqliCVocb5F0",
+    $("#myinput").suggest({ "key" : "AIzaSyDc5jAEx4GRNRtZHyOMEDJiYmPAGohDi2w",
                             filter:'(all type:/music/artist)'
                           });
   });
   </script>
 
 </head>
-<body>
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Encore</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-
-          <% if current_user %>
-            <li>
-              <%= link_to user_path(session[:user_id]) do %>
-                <strong><%= current_user.name %></strong>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to signout_path, id: "sign_out" do %>
-                <strong>Sign Out</strong>
-              <% end %>
-            </li>
-            <% else %>
-              <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-          <% end %>
-
+<body class="<%= body_classes %>">
+    <nav>
+      <ul>
+        <h1><a href="/" class="headline">ENCORE</a></h1>
+        <% if current_user %>
+          <li class="current_user">
+            <%= link_to user_path(session[:user_id]) do %>
+              <strong><%= current_user.name %></strong>
+            <% end %>
           </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+          <li class="sign-out-button">
+            <%= link_to signout_path, id: "sign_out" do %>
+              <strong>Sign Out</strong>
+            <% end %>
+          </li>
+          <% else %>
+            <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+        <% end %>
+        </li>
+      </ul>
+    </nav>
+
+
+
   <div class="container">
 
     <div id='flash'>

@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require_tree .
+var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
 
-
-
-
+$.ajaxSetup( {
+  beforeSend: function ( xhr ) {
+    xhr.setRequestHeader( 'X-CSRF-Token', token );
+  }
+});
 
 
 
